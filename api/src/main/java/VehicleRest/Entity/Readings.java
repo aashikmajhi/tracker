@@ -1,22 +1,24 @@
 package VehicleRest.Entity;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import java.sql.Date;
-
+import java.util.Date;
+@Entity
 public class Readings {
     @Id
     private String vin;
-    private String latitude;
-    private String longitude;
+    private Double latitude;
+    private Double longitude;
     private Date timestamp;
-    private String fuelVolume;
-    private String speed;
-    private String engineHp;
-    private String checkEngineLightOn;
-    private String engineCoolantLow;
-    private String cruiseControlOn;
-    private String engineRpm;
+    private Double fuelVolume;
+    private Integer speed;
+    private Integer engineHp;
+    private Boolean checkEngineLightOn;
+    private Boolean engineCoolantLow;
+    private Boolean cruiseControlOn;
+    private Integer engineRpm;
 
     @OneToOne
     private Tires tires;
@@ -29,83 +31,81 @@ public class Readings {
         this.vin = vin;
     }
 
-    public String getLat() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLat(String lat) {
-        this.latitude = lat;
-    }
+    public void setLatitude(Double lat) {        this.latitude = lat;    }
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String lon) {
+    public void setLongitude(Double lon) {
         this.longitude = lon;
     }
 
-    public Date getTimeStamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
-        this.timestamp = timeStamp;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public String getFuelVolume() {
+    public Double getFuelVolume() {
         return fuelVolume;
     }
 
-    public void setFuelVolume(String fuelVolume) {
+    public void setFuelVolume(Double fuelVolume) {
         this.fuelVolume = fuelVolume;
     }
 
-    public String getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
-    public void setSpeed(String speed) {
+    public void setSpeed(Integer speed) {
         this.speed = speed;
     }
 
-    public String getEngineHp() {
+    public Integer getEngineHp() {
         return engineHp;
     }
 
-    public void setEngineHp(String engineHp) {
+    public void setEngineHp(Integer engineHp) {
         this.engineHp = engineHp;
     }
 
-    public String getCheckEngineLightOn() {
+    public Boolean getCheckEngineLightOn() {
         return checkEngineLightOn;
     }
 
-    public void setCheckEngineLightOn(String checkEngineLightOn) {
+    public void setCheckEngineLightOn(Boolean checkEngineLightOn) {
         this.checkEngineLightOn = checkEngineLightOn;
     }
 
-    public String getEngineCoolantLow() {
+    public Boolean getEngineCoolantLow() {
         return engineCoolantLow;
     }
 
-    public void setEngineCoolantLow(String engineCoolantLow) {
+    public void setEngineCoolantLow(Boolean engineCoolantLow) {
         this.engineCoolantLow = engineCoolantLow;
     }
 
-    public String getCruiseControlOn() {
+    public Boolean getCruiseControlOn() {
         return cruiseControlOn;
     }
 
-    public void setCruiseControlOn(String cruiseControlOn) {
+    public void setCruiseControlOn(Boolean cruiseControlOn) {
         this.cruiseControlOn = cruiseControlOn;
     }
 
-    public String getEngineRpm() {
+    public Integer getEngineRpm() {
         return engineRpm;
     }
 
-    public void setEngineRpm(String engineRpm) {
+    public void setEngineRpm(Integer engineRpm) {
         this.engineRpm = engineRpm;
     }
 

@@ -1,40 +1,69 @@
 package VehicleRest.Entity;
 
-public class Tires {
-    private String frontLeft;
-    private String frontRight;
-    private String rearLeft;
-    private String rearRight;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.UUID;
 
-    public String getFrontLeft() {
+@Entity
+public class Tires {
+    @Id
+    String id;
+    private Integer frontLeft;
+    private Integer frontRight;
+    private Integer rearLeft;
+    private Integer rearRight;
+
+    public Integer getFrontLeft() {
         return frontLeft;
     }
 
-    public void setFrontLeft(String frontLeft) {
+    public void setFrontLeft(Integer frontLeft) {
         this.frontLeft = frontLeft;
     }
 
-    public String getFrontRight() {
+    public Integer getFrontRight() {
         return frontRight;
     }
 
-    public void setFrontRight(String frontRight) {
+    public void setFrontRight(Integer frontRight) {
         this.frontRight = frontRight;
     }
 
-    public String getRearLeft() {
+    public Integer getRearLeft() {
         return rearLeft;
     }
 
-    public void setRearLeft(String rearLeft) {
+    public void setRearLeft(Integer rearLeft) {
         this.rearLeft = rearLeft;
     }
 
-    public String getRearRight() {
+    public Integer getRearRight() {
         return rearRight;
     }
 
-    public void setRearRight(String rearRight) {
+    public void setRearRight(Integer rearRight) {
         this.rearRight = rearRight;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public Tires(){
+        this.id= UUID.randomUUID().toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Tires{" +
+                "id='" + id + '\'' +
+                ", frontLeft=" + frontLeft +
+                ", frontRight=" + frontRight +
+                ", rearLeft=" + rearLeft +
+                ", rearRight=" + rearRight +
+                '}';
     }
 }

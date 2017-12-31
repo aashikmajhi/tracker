@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-
 public class VehicleRepositoryImpl implements VehicleRepository {
 
     @PersistenceContext
