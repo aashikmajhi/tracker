@@ -1,9 +1,12 @@
 package VehicleRest.Service;
 
+import VehicleRest.Entity.Alert;
 import VehicleRest.Entity.Readings;
 import VehicleRest.Entity.Tires;
 import VehicleRest.Entity.Vehicle;
+import VehicleRest.Repository.AlertRepo;
 import VehicleRest.Repository.VehicleReadingRepository;
+import VehicleRest.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -15,6 +18,12 @@ public class VehicleReading implements VehicleReadingService {
 
     @Autowired
     VehicleReadingRepository repo;
+
+    @Autowired
+    VehicleRepository vehicleRepo;
+
+    @Autowired
+    VehicleAlertService vehicleAlertService;
 
     @Transactional
     public Readings findOne(String id) {
@@ -28,6 +37,14 @@ public class VehicleReading implements VehicleReadingService {
 
     @Transactional
     public Readings create(Readings read) {
+        //creating the alert
+
+        Vehicle vehicle;
+        vehicle = vehicleRepo.findOne(read.getVin());
+        if(vehicle!=null) {
+            vehicleAlertService.create(read,vehicle);
+        }
+
         Readings temp=repo.findOne(read.getVin());
         if(temp!=null){
             Tires tires=findTireOne(temp.getTires().getId());
