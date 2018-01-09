@@ -1,19 +1,35 @@
 package VehicleRest.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
+
 @Entity
+@NamedQueries({
+             @NamedQuery(name="Readings.findReadings",
+                query="SELECT read FROM Readings read WHERE read.vin=:paramVin and read.timestamp>=:paramTime")
+}
+)
+
+
 public class Readings {
     @Id
+    private String id;
     private String vin;
     private Double latitude;
     private Double longitude;
     private Date timestamp;
     private Double fuelVolume;
     private Integer speed;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private Integer engineHp;
     private Boolean checkEngineLightOn;
     private Boolean engineCoolantLow;
@@ -116,4 +132,6 @@ public class Readings {
     public void setTires(Tires tires) {
         this.tires = tires;
     }
+
+    public Readings(){this.id= UUID.randomUUID().toString();}
 }

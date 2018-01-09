@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @EnableTransactionManagement
 public class VehicleReading implements VehicleReadingService {
@@ -36,6 +38,11 @@ public class VehicleReading implements VehicleReadingService {
     }
 
     @Transactional
+    public List<Readings> getReadings(String vin) {
+        return repo.getReadings(vin);
+    }
+
+    @Transactional
     public Readings create(Readings read) {
         //creating the alert
 
@@ -45,10 +52,10 @@ public class VehicleReading implements VehicleReadingService {
             vehicleAlertService.create(read,vehicle);
         }
 
-        Readings temp=repo.findOne(read.getVin());
+        Readings temp=repo.findOne(read.getId());
         if(temp!=null){
             Tires tires=findTireOne(temp.getTires().getId());
-            repo.remove(tires);
+            //repo.remove(tires);
             return update(read.getVin(),read,read.getTires());
 
         }

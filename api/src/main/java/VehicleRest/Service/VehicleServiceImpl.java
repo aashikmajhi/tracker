@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @EnableTransactionManagement
 public class VehicleServiceImpl implements VehicleService {
@@ -32,5 +34,10 @@ public class VehicleServiceImpl implements VehicleService {
     @Transactional
     public Vehicle update(String id, Vehicle emp) {
         return repo.update(id,emp);
+    }
+
+    @Transactional
+    public List<Vehicle> findAll() {
+        return repo.findAll();
     }
 }

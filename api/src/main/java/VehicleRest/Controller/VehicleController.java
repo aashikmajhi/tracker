@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+@CrossOrigin
 @RestController
 @RequestMapping(value="vehicles")
 public class VehicleController {
@@ -14,7 +16,7 @@ public class VehicleController {
     @Autowired
     VehicleService service;
 
-    @CrossOrigin
+
     @RequestMapping(method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -31,12 +33,23 @@ public class VehicleController {
     public Vehicle create(@RequestBody Vehicle e){
                return service.create(e);
     }*/
-    //Implementing get
-    @RequestMapping(method = RequestMethod.GET)
-    public Vehicle run(){
 
-        return null;
+
+    @RequestMapping(method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public List<Vehicle> findAll() {
+        return service.findAll();
     }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Vehicle findOne(@PathVariable("id") String vin) {
+        System.out.println(vin);
+        return service.findOne(vin);
+    }
+
+
 
 
 

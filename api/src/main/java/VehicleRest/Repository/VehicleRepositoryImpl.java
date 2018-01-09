@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 public class VehicleRepositoryImpl implements VehicleRepository {
@@ -27,5 +29,13 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     public Vehicle update(String id, Vehicle emp) {
         entityManager.merge(emp);
         return emp;
+    }
+
+    public List<Vehicle> findAll() {
+        TypedQuery<Vehicle> query = entityManager.
+                createNamedQuery("vehicle.findAll",
+                Vehicle.class);
+        return query.getResultList();
+
     }
 }

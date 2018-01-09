@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class VehicleAlertServiceImpl implements VehicleAlertService {
 
@@ -54,5 +56,13 @@ public class VehicleAlertServiceImpl implements VehicleAlertService {
             alertRepo.create(alert);
 
         }
+    }
+    @Transactional
+    public List<Alert> getAlerts(String vin) {
+        return alertRepo.getAlerts(vin);
+    }
+    @Transactional
+    public List<Alert> getHighAlerts() {
+        return alertRepo.getHighAlerts();
     }
 }

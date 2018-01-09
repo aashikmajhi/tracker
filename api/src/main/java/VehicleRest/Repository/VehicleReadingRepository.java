@@ -4,6 +4,8 @@ import VehicleRest.Entity.Readings;
 import VehicleRest.Entity.Tires;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 public interface VehicleReadingRepository {
 
@@ -12,4 +14,7 @@ public interface VehicleReadingRepository {
     Readings update(String id,Readings read,Tires tire);
     Tires findTireOne(String id);
     void remove(Tires tires);
+    List<Readings> getReadings(String vin);
+
+
 }

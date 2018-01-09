@@ -2,10 +2,20 @@ package VehicleRest.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name="Alert.findByVin",
+                query="SELECT aler FROM Alert aler WHERE aler.vin=:paramVin  order by timeStamp"),
+
+        @NamedQuery(name="Alert.findHighAlert",
+                query="SELECT aler FROM Alert aler WHERE aler.priority=:paramVin and aler.timeStamp>=:paramTime order by timeStamp")
+                }
+                )
 public class Alert {
     @Id
     String id;
