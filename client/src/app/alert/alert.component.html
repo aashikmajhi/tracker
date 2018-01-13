@@ -1,0 +1,78 @@
+
+<a [routerLink]="['/vehicles']" class="btn btn-primary">Back</a>
+<br><br>
+<!--
+<table  class="ab"><tr ><td width="79%" ><h3>High Alert Details </h3></td><td ><span>&nbsp;*alerts shown are of last 2 hours</span></td></tr></table>
+<div width="200">
+
+  <table class="table" width="200">
+    <thead>
+    <tr>
+      <th> VIN </th>
+      <th> TIMESTAMP </th>
+      <th> CHECK ENGINE LIGHT ON </th>
+      <th> RED LINE RPM </th>
+      <th> FUEL VOLUME </th>
+      <th> MAX FUEL VOLUME </th>
+      <th> PRIORITY </th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let i of highAlert ">
+      <td>{{i.vin}}</td>
+      <td>{{i.timeStamp| date: 'yyyy-MM-dd hh:mm'}}</td>
+      <td>{{i.checkEngineLightOn}}</td>
+      <td>{{i.redLineRPM}}</td>
+      <td>{{i.fuelVolume}}</td>
+      <td>{{i.maxFuelVolume}}</td>
+
+      <td>
+        <p [class.high]="i.priority=='HIGH'" [class.medium]="i.priority=='MEDIUM'" [class.low]="i.priority=='LOW'"  > {{i.priority}}</p>
+      </td>
+
+
+
+    </tr>
+    </tbody>
+
+  </table></div>-->
+
+
+
+<table  class="ab"><tr ><td width="79%" ><h3>High Alert Details </h3></td><td ><span>&nbsp;*alerts shown are of last 2 hours</span></td></tr></table>
+
+<div class="example-container mat-elevation-z8" width="100%">
+  <mat-table #table [dataSource]="myDataSource" matSort >
+    <ng-container matColumnDef="vin" >
+      <mat-header-cell *matHeaderCellDef  [ngClass]="'customWidthClass'"  aria-multiline="true" mat-sort-header >Vin </mat-header-cell>
+      <mat-cell *matCellDef="let user" [ngClass]="'customWidthClass'"> {{user.vin}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="timeStamp">
+      <mat-header-cell aria-setsize="40" [ngClass]="'customWidthClass'" *matHeaderCellDef mat-sort-header >Time Stamp </mat-header-cell>
+      <mat-cell *matCellDef="let user" [ngClass]="'customWidthClass'"> {{user.timeStamp| date: 'yyyy-MM-dd hh:mm'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="checkEngineLightOn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'customWidthClass'">Check Engine Light On </mat-header-cell>
+      <mat-cell [ngClass]="'customWidthClass'" *matCellDef="let user"> {{user.checkEngineLightOn}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="redLineRPM">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Red Line RPM</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.redLineRPM}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="fuelVolume">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fuel Volume</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.fuelVolume}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="maxFuelVolume">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>max Fuel Volume</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.maxFuelVolume}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+<br>
+<table ><tr ><td ><span>&nbsp;*click on header to sort</span></td></tr></table>
+
