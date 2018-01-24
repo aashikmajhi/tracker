@@ -1,0 +1,44 @@
+
+<br><br>
+<div width="200">
+
+ <a [routerLink]="['/alert']" class="btn btn-primary">Get High Alert Details</a>
+
+  <br> <br>
+  <!--<input [(ngModel)]="searchText" placeholder="search text goes here">-->
+  <table class="table" width="200">
+    <thead>
+    <tr>
+      <th > VIN </th>
+      <th> MAKE </th>
+      <th> MODEL </th>
+      <th> YEAR </th>
+      <th> RED LINE RPM </th>
+      <th> MAX FUEL VOLUME </th>
+      <th> LAST SERVICE DATE </th>
+      <th> ALERT DETAIL </th>
+      <th> TRACK GEOLOCATION </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let i of vehicles ">
+      <td><!--<a [routerLink]="['/vehicles',i.vin]">--> {{i.vin}} <!--</a>--></td>
+      <td>{{i.make}}</td>
+      <td>{{i.model}}</td>
+      <td>{{i.year}}</td>
+      <td>{{i.redlineRpm}}</td>
+      <td>{{i.maxFuelVolume}}</td>
+      <td>{{i.lastServiceDate| date: 'yyyy-MM-dd hh:mm'}}</td>
+      <td><a [routerLink]="['/alert',i.vin]" class="btn btn-primary">Get Details</a></td>
+      <td><a [routerLink]="['/geo',i.vin]" class="btn btn-primary">Get Details</a></td>
+
+    </tr>
+    </tbody>
+
+
+  </table></div>
+
+
+
+
+

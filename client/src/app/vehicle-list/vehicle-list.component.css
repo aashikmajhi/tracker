@@ -1,0 +1,13 @@
+
+
+.table tr th{
+  text-align: center;
+  text-align-all: justify;
+  cursor: pointer;
+
+}
+td{
+  text-align: center;
+  background-color: springgreen;
+}
+

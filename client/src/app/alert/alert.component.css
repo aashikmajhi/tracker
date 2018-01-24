@@ -1,0 +1,52 @@
+.high{
+  background-color: tomato;
+}
+.medium{
+  background-color: Yellow;
+}
+table  tr td{
+  background-color: white;
+}
+.low{
+  background-color: chartreuse;
+}
+table tr td  span{
+  text-align: right;
+  background-color: white;
+}
+table tr td h3{
+  background-color: white;
+  text-align: left;
+}
+
+.table th{
+  text-align: center;
+  background-color: cornsilk;
+
+}
+td{
+  text-align: center;
+  background-color: springgreen;
+}
+
+.bold1{
+  text-align: center;
+}
+.customWidthClass{
+  flex: 0 0 200px;
+
+}
+.customboldClass{
+  font-weight: bold;
+}
+
+
+.mat-table {
+  overflow: hidden ;
+  max-height: 500px;
+}
+
+
+
+
+

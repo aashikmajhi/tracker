@@ -1,0 +1,22 @@
+.high{
+  background-color: tomato;
+}
+.medium{
+  background-color: Yellow;
+}
+
+.low{
+  background-color: chartreuse;
+}
+
+.table th{
+  text-align: center;
+  text-align-all: justify;
+  background-color: cornsilk;
+
+}
+td{
+  text-align: center;
+  background-color: ghostwhite;
+}
+

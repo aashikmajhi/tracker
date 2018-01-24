@@ -1,0 +1,37 @@
+<a [routerLink]="['/vehicles']" class="btn btn-primary">Back</a>
+<br><br>
+<div width="200">
+
+  <table class="table" width="200">
+    <thead>
+    <tr>
+      <th> VIN </th>
+      <th> TIMESTAMP </th>
+      <th> CHECK ENGINE LIGHT ON </th>
+      <th> RED LINE RPM </th>
+      <th> FUEL VOLUME </th>
+      <th> MAX FUEL VOLUME </th>
+      <th> PRIORITY </th>
+      <th> TRIGGER EMAIL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let i of alert">
+      <td>{{i.vin}}</td>
+      <td>{{i.timeStamp| date: 'yyyy-MM-dd hh:mm'}}</td>
+      <td>{{i.checkEngineLightOn}}</td>
+      <td>{{i.redLineRPM}}</td>
+      <td>{{i.fuelVolume}}</td>
+      <td>{{i.maxFuelVolume}}</td>
+
+      <td>
+      <p [class.high]="i.priority=='HIGH'" [class.medium]="i.priority=='MEDIUM'" [class.low]="i.priority=='LOW'"  > {{i.priority}}</p>
+      </td>
+      <td>
+        <button  class="btn btn-primary" [disabled]= "i.priority=='LOW'" (click)="sendEmail(i.vin)">Send Email</button>
+      </td>
+
+    </tr>
+    </tbody>
+
+  </table></div>

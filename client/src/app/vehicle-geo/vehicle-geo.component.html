@@ -1,0 +1,21 @@
+
+<a [routerLink]="['/vehicles']" class="btn btn-primary">Back</a>
+<br><br>
+
+<!--<agm-map [latitude]="lat1" [longitude]="lng1" [zoom]="3">
+
+  <agm-marker
+    [latitude]="lat1"
+    [longitude]="lng1">
+  </agm-marker>
+</agm-map>-->
+<table><tr width="100%"><td width="69%"><h3>Vehicle Geo-Location</h3></td><td  align="right"><span>*locations marked here are from last 30 minutes </span></td></tr></table>
+<agm-map [latitude]="lat1" [longitude]="lng1" [zoom]="4">
+
+<agm-marker
+  *ngFor="let m of readings; let i = index"
+  [latitude]="m.latitude"
+  [longitude]="m.longitude"
+  >
+</agm-marker>
+</agm-map>
